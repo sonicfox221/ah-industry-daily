@@ -36,50 +36,33 @@
 
 ---
 
-## 🚀 快速开始
-
-### 1. 获取代码
+## 🚀 快速开始（QClaw 一键）
 
 ```bash
-git clone https://github.com/sonicfox221/ah-industry-daily.git ~/.claude/skills/ah-industry-daily
-# 或：下载 zip 解压到 ~/.claude/skills/ah-industry-daily/
+git clone https://github.com/sonicfox221/ah-industry-daily.git
+cd ah-industry-daily
+bash install.sh
 ```
 
-> 放到 `~/.claude/skills/` 下即可被 Claude Code / QClaw 当作 skill 发现。
+`install.sh` 自动：探测 **QClaw 自带 python** → 装 akshare/pandas → 部署到 `~/.qclaw/skills/` → 建 config。
+（检测不到 QClaw 会报错——本 skill 面向 QClaw。）
 
-### 2. 装依赖
+然后**重启 QClaw**，说一句：
+
+> 生成今天的行业景气日报
+
+报告就推到你**当前会话渠道**。要每天自动 —— 在 QClaw 说：
+
+> 每个交易日早上 8:30 生成行业景气日报
+
+> 驱动因素用 **QClaw 自带模型**生成，**无需任何 key**；想把日报固定推到某个飞书群，见下方「推送」。
+
+## 通用命令行（非 QClaw 用户）
 
 ```bash
-cd ~/.claude/skills/ah-industry-daily
 pip install -r requirements.txt
+bash demo.sh    # 报告生成到 reports/；driver 需 export DEEPSEEK_API_KEY 才生成
 ```
-
-### 3. 配置
-
-```bash
-cp config.example.json config.json
-```
-
-编辑 `config.json`：填飞书群机器人 `webhook_url`。
-飞书机器人「安全设置 → 自定义关键词」设为 **`日报`**（与 `keyword` 一致即可）。
-
-> 怎么拿飞书 webhook：飞书群 → 设置 → 群机器人 → 添加 → 自定义机器人 → 复制 Webhook URL。
-
-### 4. 接 LLM key
-
-```bash
-export DEEPSEEK_API_KEY=sk-你的key
-# 永久生效可写进 ~/.ah_env：echo 'export DEEPSEEK_API_KEY=sk-...' >> ~/.ah_env
-```
-
-### 5. 自检并运行
-
-```bash
-bash setup_check.sh    # 检查依赖/配置是否就绪
-bash demo.sh           # 跑完整五步链，飞书收报告
-```
-
-或在 Claude Code / QClaw 里直接调用 skill：`/ah-industry-daily`
 
 ---
 

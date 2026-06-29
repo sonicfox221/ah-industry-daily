@@ -1,44 +1,58 @@
 [
-  {
-    "industry": "有色-铜",
-    "product": "沪铜主力(CU)",
-    "futures": "CU0",
-    "margin_stock": "601899",
-    "ah_company": {"name": "紫金矿业", "a_code": "601899.SH", "h_code": "02899.HK"}
-  },
-  {
-    "industry": "电解铝",
-    "product": "沪铝主力(AL)",
-    "futures": "AL0",
-    "margin_stock": "601600",
-    "ah_company": {"name": "中国铝业", "a_code": "601600.SH", "h_code": "02600.HK"}
-  },
-  {
-    "industry": "航运-集运",
-    "product": "欧线集运期货(EC)",
-    "futures": "EC0",
-    "margin_stock": "601919",
-    "ah_company": {"name": "中远海控", "a_code": "601919.SH", "h_code": "01919.HK"}
-  },
-  {
-    "industry": "钢铁-螺纹",
-    "product": "螺纹钢主力(RB)",
-    "futures": "RB0",
-    "margin_stock": "000898",
-    "ah_company": {"name": "鞍钢股份", "a_code": "000898.SZ", "h_code": "00347.HK"}
-  },
-  {
-    "industry": "贵金属-黄金",
-    "product": "沪金主力(AU)",
-    "futures": "AU0",
-    "margin_stock": "600547",
-    "ah_company": {"name": "山东黄金", "a_code": "600547.SH", "h_code": "01787.HK"}
-  },
-  {
-    "industry": "煤炭-焦煤",
-    "product": "焦煤主力(JM)",
-    "futures": "JM0",
-    "margin_stock": "600188",
-    "ah_company": {"name": "兖矿能源", "a_code": "600188.SH", "h_code": "01171.HK"}
-  }
+  {"name": "铜", "futures": "CU0", "sw2": "有色·工业金属·铜", "company": "紫金矿业", "code": "601899", "market": "AH"},
+  {"name": "铝", "futures": "AL0", "sw2": "有色·工业金属·铝", "company": "中国铝业", "code": "601600", "market": "AH"},
+  {"name": "锌", "futures": "ZN0", "sw2": "有色·铅锌", "company": "驰宏锌锗", "code": "600497", "market": "A"},
+  {"name": "铅", "futures": "PB0", "sw2": "有色·铅锌", "company": "中金岭南", "code": "000060", "market": "A"},
+  {"name": "镍", "futures": "NI0", "sw2": "有色·镍", "company": "华友钴业", "code": "603799", "market": "A"},
+  {"name": "锡", "futures": "SN0", "sw2": "有色·锡", "company": "锡业股份", "code": "000960", "market": "A"},
+  {"name": "黄金", "futures": "AU0", "sw2": "有色·贵金属·金", "company": "山东黄金", "code": "600547", "market": "AH"},
+  {"name": "白银", "futures": "AG0", "sw2": "有色·贵金属·银", "company": "兴业银锡", "code": "000426", "market": "A"},
+  {"name": "工业硅", "futures": "SI0", "sw2": "有色·硅", "company": "合盛硅业", "code": "603260", "market": "A"},
+  {"name": "碳酸锂", "futures": "LC0", "sw2": "有色·能源金属·锂", "company": "天齐锂业", "code": "002466", "market": "AH"},
+
+  {"name": "螺纹钢", "futures": "RB0", "sw2": "钢铁·普钢", "company": "鞍钢股份", "code": "000898", "market": "AH"},
+  {"name": "热卷", "futures": "HC0", "sw2": "钢铁·普钢", "company": "宝钢股份", "code": "600019", "market": "A"},
+  {"name": "铁矿石", "futures": "I0", "sw2": "钢铁·钢铁原料", "company": "河钢资源", "code": "000923", "market": "A"},
+  {"name": "不锈钢", "futures": "SS0", "sw2": "钢铁·特钢", "company": "太钢不锈", "code": "000825", "market": "A"},
+  {"name": "锰硅", "futures": "SM0", "sw2": "钢铁·铁合金", "company": "鄂尔多斯", "code": "600295", "market": "A"},
+  {"name": "硅铁", "futures": "SF0", "sw2": "钢铁·铁合金", "company": "鄂尔多斯", "code": "600295", "market": "A"},
+
+  {"name": "焦煤", "futures": "JM0", "sw2": "煤炭·焦煤", "company": "山西焦煤", "code": "000983", "market": "A"},
+  {"name": "焦炭", "futures": "J0", "sw2": "煤炭·焦炭", "company": "陕西黑猫", "code": "601015", "market": "A"},
+
+  {"name": "原油", "futures": "SC0", "sw2": "石化·油气开采", "company": "中国海油", "code": "600938", "market": "AH"},
+  {"name": "燃料油", "futures": "FU0", "sw2": "石化·炼化", "company": "中国石化", "code": "600028", "market": "AH"},
+  {"name": "沥青", "futures": "BU0", "sw2": "石化·炼化", "company": "中国石化", "code": "600028", "market": "AH"},
+  {"name": "液化气LPG", "futures": "PG0", "sw2": "石化·燃气", "company": "东华能源", "code": "002221", "market": "A"},
+
+  {"name": "PTA", "futures": "TA0", "sw2": "化工·涤纶", "company": "荣盛石化", "code": "002493", "market": "A"},
+  {"name": "乙二醇", "futures": "EG0", "sw2": "化工·聚酯原料", "company": "恒力石化", "code": "600346", "market": "A"},
+  {"name": "短纤", "futures": "PF0", "sw2": "化工·涤纶", "company": "新凤鸣", "code": "603225", "market": "A"},
+  {"name": "对二甲苯PX", "futures": "PX0", "sw2": "化工·芳烃", "company": "东方盛虹", "code": "000301", "market": "A"},
+  {"name": "甲醇", "futures": "MA0", "sw2": "化工·煤化工", "company": "宝丰能源", "code": "600989", "market": "A"},
+  {"name": "尿素", "futures": "UR0", "sw2": "化工·氮肥", "company": "华鲁恒升", "code": "600426", "market": "A"},
+  {"name": "PVC", "futures": "V0", "sw2": "化工·氯碱", "company": "中泰化学", "code": "002092", "market": "A"},
+  {"name": "烧碱", "futures": "SH0", "sw2": "化工·氯碱", "company": "滨化股份", "code": "601678", "market": "A"},
+  {"name": "聚丙烯PP", "futures": "PP0", "sw2": "化工·聚烯烃", "company": "东华能源", "code": "002221", "market": "A"},
+  {"name": "聚乙烯", "futures": "L0", "sw2": "化工·聚烯烃", "company": "中国石化", "code": "600028", "market": "AH"},
+  {"name": "苯乙烯", "futures": "EB0", "sw2": "化工·苯乙烯", "company": "卫星化学", "code": "002648", "market": "A"},
+  {"name": "纯碱", "futures": "SA0", "sw2": "化工·纯碱", "company": "远兴能源", "code": "000683", "market": "A"},
+  {"name": "玻璃", "futures": "FG0", "sw2": "建材·玻璃", "company": "旗滨集团", "code": "601636", "market": "A"},
+  {"name": "天然橡胶", "futures": "RU0", "sw2": "化工·橡胶", "company": "海南橡胶", "code": "601118", "market": "A"},
+  {"name": "纸浆", "futures": "SP0", "sw2": "轻工·造纸", "company": "太阳纸业", "code": "002078", "market": "A"},
+
+  {"name": "豆粕", "futures": "M0", "sw2": "农牧·饲料", "company": "海大集团", "code": "002311", "market": "A"},
+  {"name": "豆油", "futures": "Y0", "sw2": "农牧·食用油", "company": "金龙鱼", "code": "300999", "market": "A"},
+  {"name": "棕榈油", "futures": "P0", "sw2": "农牧·食用油", "company": "金龙鱼", "code": "300999", "market": "A"},
+  {"name": "菜油", "futures": "OI0", "sw2": "农牧·食用油", "company": "道道全", "code": "002852", "market": "A"},
+  {"name": "玉米", "futures": "C0", "sw2": "农牧·种植", "company": "北大荒", "code": "600598", "market": "A"},
+  {"name": "豆一", "futures": "A0", "sw2": "农牧·种植", "company": "北大荒", "code": "600598", "market": "A"},
+  {"name": "白糖", "futures": "SR0", "sw2": "农牧·制糖", "company": "中粮糖业", "code": "600737", "market": "A"},
+  {"name": "棉花", "futures": "CF0", "sw2": "农牧·棉花", "company": "新农开发", "code": "600359", "market": "A"},
+  {"name": "生猪", "futures": "LH0", "sw2": "农牧·生猪养殖", "company": "牧原股份", "code": "002714", "market": "A"},
+  {"name": "鸡蛋", "futures": "JD0", "sw2": "农牧·禽养殖", "company": "圣农发展", "code": "002299", "market": "A"},
+  {"name": "苹果", "futures": "AP0", "sw2": "农牧·水果", "company": "宏辉果蔬", "code": "603336", "market": "A"},
+  {"name": "红枣", "futures": "CJ0", "sw2": "农牧·种植", "company": "好想你", "code": "002582", "market": "A"},
+
+  {"name": "集运欧线", "futures": "EC0", "sw2": "交运·航运·集运", "company": "中远海控", "code": "601919", "market": "AH"}
 ]

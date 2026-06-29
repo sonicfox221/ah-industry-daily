@@ -1,6 +1,6 @@
 ---
 name: ah-industry-daily
-description: 生成"近1个月价格明显上涨 + 毛利率明显改善的行业"日报——LLM 解释核心驱动、给出最早信号日期与最受益的 AH 上市公司，并推送到飞书。用于每日定时盯行业景气拐点。
+description: 生成"近1个月价格明显上涨 + 毛利率明显改善的行业"日报（覆盖约50个有期货的周期品种/申万二级）——LLM 解释核心驱动、给出最早信号日期与最受益的 A股或港股上市公司，并推送到当前会话渠道或飞书。用于每日定时盯行业景气拐点。
 version: "1.0"
 trigger_keywords:
   - 行业日报
@@ -42,8 +42,11 @@ metadata: {"openclaw": {"emoji": "📈"}}
 4. **`python3 render_report.py reports/analysis_<date>.json reports/report_<date>.md`** —
    渲染 Markdown 日报。
 
-5. **`python3 notify.py reports/report_<date>.md`** — 推送。`notify.channel=feishu`
-   时发到飞书群（正文自动带上 `keyword` 兜底关键词），否则本地落地预览。
+5. **推送（双通道）**：
+   - **默认**：把 `reports/report_<date>.md` 的内容**发到当前会话渠道**（QClaw 负责投递；
+     定时用 `qclaw-cron-skill` 默认也推当前渠道）——同事零配置，在哪个群跑就推哪个群。
+   - **可选**：`python3 notify.py reports/report_<date>.md` 固定推某飞书群
+     （需在 config.json 把 channel 改回 `feishu` 并填 `webhook_url` + `keyword`）。
 
 > 一键全链路：`bash demo.sh`（设了 `DEEPSEEK_API_KEY` 才会真生成驱动，否则 driver 留空）。
 

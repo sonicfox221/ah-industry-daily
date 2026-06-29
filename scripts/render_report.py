@@ -30,7 +30,7 @@ def main():
             f"- 价格：**+{r['price_change_pct']:.0f}%**　|　毛利率：**+{r['margin_change_pp']:.1f}pp**",
             f"- 最早信号日期：**{r['first_signal_date']}**",
             f"- 核心驱动：{r['driver'] or '（待 AI 补充）'}",
-            f"- 最受益 AH 公司：**{c['name']}**（A {c['a_code']} / H {c['h_code']}）",
+            f"- 最受益公司：**{c['name']}**（{c['code']} · {c['market']}）",
             "",
         ]
     if not ana["industries"]:

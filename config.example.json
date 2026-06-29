@@ -2,7 +2,7 @@
   "_comment": "拷成 config.json 再填。data_source: akshare(真实)/mock(离线样例)。",
   "data_source": "akshare",
   "notify": {
-    "channel": "feishu",
+    "channel": "file",
     "webhook_url": "PUT_YOUR_FEISHU_BOT_URL_HERE",
     "keyword": "日报",
     "email_to": ""

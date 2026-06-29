@@ -1,47 +1,7 @@
 [
-  {
-    "industry": "有色-铜",
-    "product": "电解铜",
-    "price_change_pct": 12.0,
-    "margin_change_pp": 4.5,
-    "first_signal_date": "2026-06-05",
-    "driver": "智利矿山扰动叠加电网/AI数据中心用铜需求超预期，库存去化加速",
-    "ah_company": {"name": "紫金矿业", "a_code": "601899.SH", "h_code": "02899.HK"}
-  },
-  {
-    "industry": "电解铝",
-    "product": "原铝",
-    "price_change_pct": 9.0,
-    "margin_change_pp": 3.1,
-    "first_signal_date": "2026-06-10",
-    "driver": "云南来水偏枯限产 + 4500万吨产能天花板临近，供给刚性，氧化铝成本回落放大利润",
-    "ah_company": {"name": "中国铝业", "a_code": "601600.SH", "h_code": "02600.HK"}
-  },
-  {
-    "industry": "航运-集运",
-    "product": "欧线运价",
-    "price_change_pct": 22.0,
-    "margin_change_pp": 5.0,
-    "first_signal_date": "2026-06-08",
-    "driver": "红海绕行常态化拉长航距，旺季提前抢运，SCFI 连续四周上行",
-    "ah_company": {"name": "中远海控", "a_code": "601919.SH", "h_code": "01919.HK"}
-  },
-  {
-    "industry": "新能源车",
-    "product": "整车",
-    "price_change_pct": 6.0,
-    "margin_change_pp": 1.5,
-    "first_signal_date": "2026-06-15",
-    "driver": "碳酸锂成本下行 + 高端车型放量，价格战边际缓和带动单车毛利修复",
-    "ah_company": {"name": "比亚迪", "a_code": "002594.SZ", "h_code": "01211.HK"}
-  },
-  {
-    "industry": "水泥",
-    "product": "P.O 42.5 散装",
-    "price_change_pct": 2.0,
-    "margin_change_pp": 0.3,
-    "first_signal_date": "2026-06-20",
-    "driver": "局部错峰提价，但需求疲弱、信号微弱（用于演示阈值过滤）",
-    "ah_company": {"name": "海螺水泥", "a_code": "600585.SH", "h_code": "00914.HK"}
-  }
+  {"industry": "交运·航运·集运", "product": "集运欧线", "price_change_pct": 22.0, "margin_change_pp": 5.0, "first_signal_date": "2026-06-08", "driver": "红海绕行拉长航距+旺季抢运，运价跳涨", "ah_company": {"name": "中远海控", "code": "601919", "market": "AH"}},
+  {"industry": "有色·工业金属·铜", "product": "铜", "price_change_pct": 12.0, "margin_change_pp": 4.5, "first_signal_date": "2026-06-05", "driver": "矿端扰动+电网与AI用铜需求，库存去化", "ah_company": {"name": "紫金矿业", "code": "601899", "market": "AH"}},
+  {"industry": "有色·能源金属·锂", "product": "碳酸锂", "price_change_pct": 9.0, "margin_change_pp": 3.1, "first_signal_date": "2026-06-10", "driver": "减产挺价+需求回暖，锂价反弹", "ah_company": {"name": "天齐锂业", "code": "002466", "market": "AH"}},
+  {"industry": "有色·贵金属·金", "product": "黄金", "price_change_pct": 6.0, "margin_change_pp": 1.5, "first_signal_date": "2026-06-15", "driver": "降息预期+央行购金，金价中枢上移", "ah_company": {"name": "山东黄金", "code": "600547", "market": "AH"}},
+  {"industry": "钢铁·普钢", "product": "螺纹钢", "price_change_pct": 2.0, "margin_change_pp": 0.3, "first_signal_date": "2026-06-20", "driver": "弱（演示阈值过滤）", "ah_company": {"name": "鞍钢股份", "code": "000898", "market": "AH"}}
 ]

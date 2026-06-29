@@ -34,7 +34,12 @@ def _margin_block(stock):
     """返回毛利率同比改善(pp)：最新报告期 vs 去年同期(同口径)。"""
     import akshare as ak
     fa = ak.stock_financial_abstract(symbol=stock)
-    row = fa[fa["指标"] == "毛利率"].iloc[0]
+    if fa is None or fa.empty:
+        raise ValueError(f"无财报数据(可能是港股代码): {stock}")
+    sub = fa[fa["指标"] == "毛利率"]
+    if sub.empty:
+        raise ValueError(f"无毛利率行: {stock}")
+    row = sub.iloc[0]
     cols = sorted([c for c in fa.columns if c.isdigit() and len(c) == 8],
                   reverse=True)
     latest = cols[0]
@@ -52,20 +57,20 @@ def fetch_akshare():
     for u in universe:
         try:
             chg, sig = _price_block(u["futures"], up)
-            margin = _margin_block(u["margin_stock"])
+            margin = _margin_block(u["code"])
         except Exception as e:
-            print(f"  ! 跳过 {u['industry']}: {e}")
+            print(f"  ! 跳过 {u['sw2']}/{u['name']}: {e}")
             continue
         out.append({
-            "industry": u["industry"],
-            "product": u["product"],
+            "industry": u["sw2"],
+            "product": u["name"],
             "price_change_pct": chg,
             "margin_change_pp": margin,
             "first_signal_date": sig,
             "driver": "",
-            "ah_company": u["ah_company"],
+            "ah_company": {"name": u["company"], "code": u["code"], "market": u["market"]},
         })
-        print(f"  · {u['industry']}: 涨{chg}% 毛利{margin:+}pp 信号{sig}")
+        print(f"  · {u['sw2']}/{u['name']}: 涨{chg}% 毛利{margin:+}pp 信号{sig}")
     return out
 
 
