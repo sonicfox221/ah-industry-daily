@@ -1,4 +1,4 @@
-"""功能4 渲染：盘面利润 + 历史分位 + 起涨日 + 利润扩张/成本推动 + 多标的弹性。
+"""功能4 渲染（指导性排行）：重点关注详列（分项景气+起涨+驱动+多标的）+ 完整排行榜。
 用法: python3 render_report.py <analysis.json> [输出路径]
 """
 import sys
@@ -13,40 +13,51 @@ def main():
 
     src = "akshare 实时行情" if ana.get("data_source") == "akshare" \
         else "⚠️ 样例数据(mock，非真实行情)"
-    pmin = ana["thresholds"].get("price_percentile_min", 90)
+    focus_min = ana["thresholds"].get("prosperity_focus", 70)
+    rk = ana["ranking"]
 
     lines = [
         f"# 行业景气日报（{ana['as_of']}）",
         "",
         f"> 数据源：**{src}**",
         "",
-        f"> 近 1 个月，{ana['count_total']} 个品种中 **{ana['count_hit']}** 个达标"
-        f"（涨幅 ≥ 近 3 年 {pmin} 分位 **且** 盘面利润走阔）。",
+        f"> {ana['count_total']} 个周期品种景气度排行（0–100，多指标加权）；"
+        f"**≥{focus_min} 为重点关注**，本期 **{ana['count_focus']}** 个。",
         "",
+        "## 🔥 重点关注",
     ]
-    for i, r in enumerate(ana["industries"], 1):
-        if r.get("has_spread"):
-            typ = "利润扩张型" if r.get("spread_change", 0) > 0 else "成本推动型"
-            sp = f"盘面利润价差 **{r['spread_change']:+.0f}**（**{typ}**）"
-        else:
-            sp = "价格代理利润（无盘面价差，**利润扩张型**）"
+    focus = [r for r in rk if r.get("focus")]
+    if not focus:
+        lines.append("_本期无 ≥ 阈值的重点品种，见下方完整排行(关注靠前的)。_")
+    for i, r in enumerate(focus, 1):
+        parts = r.get("parts", {})
         lines += [
-            f"## {i}. {r['industry']}（{r['product']}）",
-            f"- 价格：**{r['price_change_pct']:+.0f}%**（近 3 年 **{r['price_percentile']}** 分位）",
-            f"- {sp}",
-            f"- 最早信号(起涨)日期：**{r['first_signal_date']}**",
-            f"- 核心驱动：{r['driver'] or '（待 AI 补充）'}",
+            f"### {i}. {r['industry']}（{r['product']}）— 景气 **{r['prosperity']}**",
+            f"- 最早信号(起涨)：**{r['first_signal_date']}**",
+            f"- 核心驱动：{r.get('driver') or '（待 AI 补充）'}",
+            "- 景气分项：" + "；".join(
+                f"{p['label']} {p['score']}" for p in parts.values()),
             "- 受益标的（按弹性）：",
         ]
         for s in r.get("stocks", []):
             lines.append(
-                f"    - {s.get('role','')}：**{s['name']}**（{s['code']} · {s['market']}）— {s.get('why','')}")
-        m = r.get("margin_change_pp")
-        lines.append(f"- 财报毛利(辅助·滞后)：{('%+.1fpp' % m) if m is not None else 'NA'}")
+                f"    - {s.get('role','')}：**{s['name']}**（{s['code']}·{s['market']}）— {s.get('why','')}")
         lines.append("")
 
-    if not ana["industries"]:
-        lines.append("_本期无品种达标（无『涨幅高分位且利润走阔』的品种）。_")
+    # 完整排行榜（Top 20）
+    lines += [
+        "## 📊 完整景气排行（Top 20）",
+        "",
+        "| # | 行业 | 品种 | 景气 | 价格动量 | 利润走阔 | 利润水平 |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for i, r in enumerate(rk[:20], 1):
+        p = r.get("parts", {})
+        def g(k):
+            return p.get(k, {}).get("score", "-")
+        lines.append(
+            f"| {i} | {r['industry']} | {r['product']} | **{r['prosperity']}** | "
+            f"{g('price_mom')} | {g('spread_widen')} | {g('profit_level')} |")
 
     text = "\n".join(lines)
     os.makedirs(os.path.dirname(out), exist_ok=True)

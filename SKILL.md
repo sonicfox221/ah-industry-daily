@@ -1,6 +1,6 @@
 ---
 name: ah-industry-daily
-description: 生成"近1个月价格明显上涨 + 毛利率明显改善的行业"日报（覆盖约50个有期货的周期品种/申万二级）——LLM 解释核心驱动、给出最早信号日期与最受益的 A股或港股上市公司，并推送到当前会话渠道或飞书。用于每日定时盯行业景气拐点。
+description: 生成行业景气日报：覆盖约50个有期货的周期品种(申万二级)，用可扩展的多指标框架算景气度并排行，解释核心驱动(利润扩张/成本推动)、给出起涨日与最受益的A股或港股标的，推送当前会话渠道或飞书。每日盯行业景气拐点。
 version: "1.0"
 trigger_keywords:
   - 行业日报
@@ -24,12 +24,14 @@ metadata: {"openclaw": {"emoji": "📈"}}
 
 ## 流水线（纯脚本五步；`<date>` 用今天日期，脚本在 `scripts/` 下）
 
-1. **`python3 fetch_data.py reports/raw_<date>.json`** — 拉数。`config.json` 的
-   `data_source=akshare` 走真实接口（期货主力日线算近30日涨幅+最早信号日，财报毛利率算同比），
-   `=mock` 回落 `data/sample_data.json`。
+1. **`python3 fetch_data.py reports/raw_<date>.json`** — 拉数 + 算景气。对每个品种用
+   **指标框架**(`indicators.py` 多指标 → 0-100 景气分 → 加权合成景气总分) + 起涨拐点。
+   数据源在 `sources.py`(可换/留接口)。`data_source=mock` 回落 `data/sample_data.json`。
 
 2. **`python3 analyze.py reports/raw_<date>.json reports/analysis_<date>.json`** —
-   按 `thresholds` 筛出达标行业、排序。`driver` 字段先留空。
+   按景气总分**排行全部品种**，≥ `prosperity_focus` 标"重点关注"。`driver` 先留空。
+
+> 可扩展：加指标=在 `indicators.py` 写函数 `@indicator` 注册；加/换数据源=在 `sources.py` 实现方法。主流程不动。
 
 3. **生成核心驱动因素**（按运行环境二选一）：
    - **在 QClaw / agent 里运行（推荐）**：由你（当前 AI / QClaw 自带模型）读

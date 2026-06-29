@@ -1,5 +1,4 @@
-"""功能2 分析：达标 = 涨幅历史高分位 且 盘面价差走阔（同期、量纲统一）。
-按利润扩张强度排序。
+"""功能2 分析（指导性）：按景气总分排行全部品种，标记"重点关注"(≥阈值)。
 用法: python3 analyze.py <raw.json> [输出路径]
 """
 import sys
@@ -14,32 +13,23 @@ def main():
 
     cfg = load_config()
     th = cfg["thresholds"]
-    pmin = th.get("price_percentile_min", 90)
-    need_widen = th.get("require_spread_widen", True)
+    focus_min = th.get("prosperity_focus", 70)
     rows = read_json(raw_path)
 
-    hits = []
+    rows.sort(key=lambda r: r.get("prosperity", 0), reverse=True)
     for r in rows:
-        if r.get("price_percentile", 0) < pmin:
-            continue
-        if need_widen and r.get("spread_change", 0) <= 0:
-            continue
-        hits.append(r)
-
-    # 利润扩张强度优先（价差走阔% 加权）+ 涨幅分位
-    hits.sort(key=lambda r: r.get("spread_change_pct", 0) * 2 + r.get("price_percentile", 0),
-              reverse=True)
+        r["focus"] = r.get("prosperity", 0) >= focus_min
 
     result = {
         "as_of": today(),
         "data_source": cfg.get("data_source", "akshare"),
         "thresholds": th,
         "count_total": len(rows),
-        "count_hit": len(hits),
-        "industries": hits,
+        "count_focus": sum(1 for r in rows if r["focus"]),
+        "ranking": rows,
     }
     write_json(out, result)
-    print(f"[analyze] {len(hits)}/{len(rows)} 个品种达标 -> {out}")
+    print(f"[analyze] {result['count_focus']}/{len(rows)} 个重点关注 -> {out}")
 
 
 if __name__ == "__main__":

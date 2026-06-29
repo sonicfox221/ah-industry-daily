@@ -1,21 +1,37 @@
 [
-  {"industry": "交运·航运·集运", "product": "集运欧线", "price_change_pct": 22.0, "price_percentile": 96.0, "spread_change": 600.0, "spread_change_pct": 19.0, "has_spread": false, "first_signal_date": "2026-06-08", "margin_change_pp": 5.0, "driver": "",
+  {"industry": "交运·航运·集运", "product": "集运欧线", "prosperity": 86.0, "first_signal_date": "2026-06-08", "driver": "",
+   "parts": {
+     "price_mom": {"label": "价格动量", "score": 96.0, "raw": "涨幅近3年96分位", "weight": 1.0},
+     "spread_widen": {"label": "盘面利润走阔", "score": 88.0, "raw": "价差走阔分位88", "weight": 1.5},
+     "profit_level": {"label": "盘面利润绝对水平", "score": 80.0, "raw": "利润处近3年80分位", "weight": 1.0},
+     "margin_yoy": {"label": "财报毛利同比", "score": 75.0, "raw": "毛利同比+5.0pp", "weight": 0.5}},
    "stocks": [
      {"name": "中远海控", "code": "601919", "market": "AH", "role": "龙头", "why": "集运龙头、运价弹性极大"},
      {"name": "东方海外国际", "code": "00316", "market": "H", "role": "弹性", "why": "港股集运纯度高"}]},
-  {"industry": "钢铁·普钢", "product": "螺纹钢", "price_change_pct": 8.0, "price_percentile": 92.0, "spread_change": 320.0, "spread_change_pct": 45.0, "has_spread": true, "first_signal_date": "2026-06-05", "margin_change_pp": 2.1, "driver": "",
+  {"industry": "有色·工业金属·铜", "product": "铜", "prosperity": 78.0, "first_signal_date": "2026-06-03", "driver": "",
+   "parts": {
+     "price_mom": {"label": "价格动量", "score": 94.0, "raw": "涨幅近3年94分位", "weight": 1.0},
+     "spread_widen": {"label": "盘面利润走阔", "score": 70.0, "raw": "价差走阔分位70", "weight": 1.5},
+     "profit_level": {"label": "盘面利润绝对水平", "score": 75.0, "raw": "利润处近3年75分位", "weight": 1.0},
+     "margin_yoy": {"label": "财报毛利同比", "score": 72.0, "raw": "毛利同比+4.5pp", "weight": 0.5}},
+   "stocks": [
+     {"name": "紫金矿业", "code": "601899", "market": "AH", "role": "龙头", "why": "全球铜金龙头、量增"},
+     {"name": "洛阳钼业", "code": "603993", "market": "AH", "role": "弹性", "why": "铜钴纯度高、产能放量"}]},
+  {"industry": "钢铁·普钢", "product": "螺纹钢", "prosperity": 71.0, "first_signal_date": "2026-06-05", "driver": "",
+   "parts": {
+     "price_mom": {"label": "价格动量", "score": 75.0, "raw": "涨幅近3年75分位", "weight": 1.0},
+     "spread_widen": {"label": "盘面利润走阔", "score": 82.0, "raw": "价差走阔分位82", "weight": 1.5},
+     "profit_level": {"label": "盘面利润绝对水平", "score": 55.0, "raw": "利润处近3年55分位", "weight": 1.0},
+     "margin_yoy": {"label": "财报毛利同比", "score": 60.0, "raw": "毛利同比+2.1pp", "weight": 0.5}},
    "stocks": [
      {"name": "华菱钢铁", "code": "000932", "market": "A", "role": "龙头", "why": "普钢龙头、品种钢占比高"},
      {"name": "鞍钢股份", "code": "000898", "market": "AH", "role": "弹性", "why": "高负债、利润弹性大"}]},
-  {"industry": "有色·工业金属·铜", "product": "铜", "price_change_pct": 12.0, "price_percentile": 94.0, "spread_change": 8000.0, "spread_change_pct": 12.0, "has_spread": false, "first_signal_date": "2026-06-03", "margin_change_pp": 4.5, "driver": "",
-   "stocks": [
-     {"name": "紫金矿业", "code": "601899", "market": "AH", "role": "龙头", "why": "全球铜金龙头、量增"},
-     {"name": "洛阳钼业", "code": "603993", "market": "AH", "role": "弹性", "why": "铜钴纯度高、产能放量"},
-     {"name": "江西铜业", "code": "600362", "market": "AH", "role": "弹性", "why": "冶炼+矿、价涨弹性"}]},
-  {"industry": "有色·贵金属·金", "product": "黄金", "price_change_pct": 4.0, "price_percentile": 85.0, "spread_change": 2000.0, "spread_change_pct": 4.0, "has_spread": false, "first_signal_date": "2026-06-15", "margin_change_pp": 2.7, "driver": "",
-   "stocks": [
-     {"name": "山东黄金", "code": "600547", "market": "AH", "role": "龙头", "why": "金矿龙头"}]},
-  {"industry": "建材·玻璃", "product": "玻璃", "price_change_pct": 3.0, "price_percentile": 70.0, "spread_change": -150.0, "spread_change_pct": -10.0, "has_spread": true, "first_signal_date": "2026-06-20", "margin_change_pp": 0.3, "driver": "",
+  {"industry": "建材·玻璃", "product": "玻璃", "prosperity": 42.0, "first_signal_date": "2026-06-20", "driver": "",
+   "parts": {
+     "price_mom": {"label": "价格动量", "score": 55.0, "raw": "涨幅近3年55分位", "weight": 1.0},
+     "spread_widen": {"label": "盘面利润走阔", "score": 30.0, "raw": "价差走阔分位30", "weight": 1.5},
+     "profit_level": {"label": "盘面利润绝对水平", "score": 40.0, "raw": "利润处近3年40分位", "weight": 1.0},
+     "margin_yoy": {"label": "财报毛利同比", "score": 50.0, "raw": "毛利同比+0.3pp", "weight": 0.5}},
    "stocks": [
      {"name": "旗滨集团", "code": "601636", "market": "A", "role": "龙头", "why": "浮法玻璃龙头"}]}
 ]
