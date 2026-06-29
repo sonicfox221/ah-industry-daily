@@ -41,7 +41,7 @@
 ### 1. 获取代码
 
 ```bash
-git clone https://github.com/<your-org>/ah-industry-daily.git ~/.claude/skills/ah-industry-daily
+git clone https://github.com/sonicfox221/ah-industry-daily.git ~/.claude/skills/ah-industry-daily
 # 或：下载 zip 解压到 ~/.claude/skills/ah-industry-daily/
 ```
 
