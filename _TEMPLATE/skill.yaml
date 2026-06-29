@@ -1,0 +1,29 @@
+# 通用 skill manifest（兼容层）。QClaw/Claude Code 实际读 SKILL.md frontmatter；
+# 本文件给认 skill.yaml 的平台用，内容与 SKILL.md frontmatter 保持一致。
+name: your-skill-name
+version: "0.1"
+description: >-
+  一句话说清这个 skill 干什么、何时调用。
+keywords: [关键词1, 关键词2]
+
+language: python
+entrypoint: demo.sh
+runtime:
+  python: ">=3.9"
+requires:
+  packages: []                  # 你的依赖，同 requirements.txt
+
+config:
+  file: config.json             # 从 config.example.json 拷贝
+  env: []                       # 需要的环境变量（密钥放这，别写进文件）
+outputs:
+  - reports/<your-output>
+
+permissions:                    # 按需声明
+  - network
+  - exec
+  - filesystem
+
+metadata:
+  openclaw:
+    emoji: 🧩

@@ -1,0 +1,18 @@
+{
+  "_comment": "拷成 config.json 再填。密钥不要写这里，用环境变量（见 ai.api_key_env）。",
+  "data_source": "real",
+  "notify": {
+    "channel": "file",
+    "webhook_url": "PUT_YOUR_WEBHOOK_HERE",
+    "keyword": "日报"
+  },
+  "thresholds": {
+    "_comment": "你的筛选/排序阈值，放这里方便不改代码就微调"
+  },
+  "ai": {
+    "_comment": "可选：要用 LLM 就填；OpenAI 兼容接口。key 走环境变量。",
+    "base_url": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-chat",
+    "api_key_env": "DEEPSEEK_API_KEY"
+  }
+}
