@@ -1,7 +1,7 @@
-"""功能3 生成核心驱动因素：调 LLM(默认 DeepSeek，OpenAI 兼容接口)为每个达标行业
-写一句驱动解释，写回 analysis 的 driver 字段。
-- api key 从环境变量读(见 config.ai.api_key_env)，不写进 config，避免泄露。
-- 无 key / 无达标行业 / 调用失败时优雅跳过(driver 留空)，不阻断流水线。
+"""功能3 生成核心驱动（数字锚）：调 LLM（默认 DeepSeek，OpenAI 兼容）为每个达标品种
+基于真实数字写一句驱动，并强制标注"利润扩张型/成本推动型"。
+- 在 QClaw/agent 里跑：可由 agent 自己读 analysis 填 driver（用自带模型，无需 key）。
+- 纯脚本：本脚本调 config.ai，api key 读环境变量；无 key/0 达标优雅跳过。
 用法: python3 gen_driver.py <analysis.json>
 """
 import sys
@@ -10,9 +10,11 @@ import json
 import urllib.request
 from common import load_config, read_json, write_json
 
-SYS_PROMPT = ("你是A股行业研究员。根据给定行业的近期涨价幅度、毛利率同比变化、最早信号日期，"
-              "用一句话(40字内)精炼解释其价格上涨与毛利改善的核心驱动因素，可点出最早信号的事件线索。"
-              "只输出这一句话，不要前后缀。")
+SYS_PROMPT = (
+    "你是大宗商品行业研究员。根据给定的价格涨幅、历史分位、盘面利润价差变化、起涨日，"
+    "用一句话(40字内)解释核心驱动因素，并**必须明确指出**这是"
+    "'利润扩张型'(价格涨且盘面价差走阔，行业自己赚到钱)还是"
+    "'成本推动型'(价格涨但价差收窄，利好被上游吃掉)。只输出这一句话。")
 
 
 def call_llm(ai, key, user_prompt):
@@ -43,21 +45,22 @@ def main():
     ana = read_json(path)
     inds = ana.get("industries", [])
     if not inds:
-        print("[gen_driver] 无达标行业，跳过")
+        print("[gen_driver] 无达标品种，跳过")
         return
     if not key:
-        print(f"[gen_driver] 未设环境变量 {key_env}，driver 留空(降级，不影响其它步骤)")
+        print(f"[gen_driver] 未设 {key_env}，driver 留空（降级；在 QClaw 里可由自带模型填）")
         return
 
     for r in inds:
-        up = (f"行业：{r['industry']}（{r['product']}）；近30日涨幅 {r['price_change_pct']}%；"
-              f"毛利率同比 {r['margin_change_pp']:+}pp；最早信号日 {r['first_signal_date']}；"
-              f"代表 AH 公司 {r['ah_company']['name']}。")
+        kind = "有盘面价差" if r.get("has_spread") else "价格代理(上游)"
+        up = (f"品种：{r['industry']}/{r['product']}；近30日涨幅 {r['price_change_pct']}%"
+              f"（近3年 {r['price_percentile']} 分位）；盘面利润价差变化 {r.get('spread_change')}"
+              f"（{kind}）；起涨日 {r['first_signal_date']}。")
         try:
             r["driver"] = call_llm(ai, key, up)
-            print(f"  · {r['industry']}: {r['driver']}")
+            print(f"  · {r['product']}: {r['driver']}")
         except Exception as e:
-            print(f"  ! {r['industry']} 生成失败(driver 留空): {e}")
+            print(f"  ! {r['product']} 生成失败(留空): {e}")
 
     write_json(path, ana)
     print(f"[gen_driver] 完成 -> {path}")

@@ -8,8 +8,8 @@
     "email_to": ""
   },
   "thresholds": {
-    "price_up_pct": 5.0,
-    "margin_improve_pp": 1.0
+    "price_percentile_min": 90,
+    "require_spread_widen": true
   },
   "ai": {
     "_comment": "OpenAI 兼容接口；换模型改 base_url/model。key 放环境变量，不写这里。",

@@ -1,58 +1,269 @@
 [
-  {"name": "铜", "futures": "CU0", "sw2": "有色·工业金属·铜", "company": "紫金矿业", "code": "601899", "market": "AH"},
-  {"name": "铝", "futures": "AL0", "sw2": "有色·工业金属·铝", "company": "中国铝业", "code": "601600", "market": "AH"},
-  {"name": "锌", "futures": "ZN0", "sw2": "有色·铅锌", "company": "驰宏锌锗", "code": "600497", "market": "A"},
-  {"name": "铅", "futures": "PB0", "sw2": "有色·铅锌", "company": "中金岭南", "code": "000060", "market": "A"},
-  {"name": "镍", "futures": "NI0", "sw2": "有色·镍", "company": "华友钴业", "code": "603799", "market": "A"},
-  {"name": "锡", "futures": "SN0", "sw2": "有色·锡", "company": "锡业股份", "code": "000960", "market": "A"},
-  {"name": "黄金", "futures": "AU0", "sw2": "有色·贵金属·金", "company": "山东黄金", "code": "600547", "market": "AH"},
-  {"name": "白银", "futures": "AG0", "sw2": "有色·贵金属·银", "company": "兴业银锡", "code": "000426", "market": "A"},
-  {"name": "工业硅", "futures": "SI0", "sw2": "有色·硅", "company": "合盛硅业", "code": "603260", "market": "A"},
-  {"name": "碳酸锂", "futures": "LC0", "sw2": "有色·能源金属·锂", "company": "天齐锂业", "code": "002466", "market": "AH"},
+  {"name": "铜", "futures": "CU0", "sw2": "有色·工业金属·铜",
+   "stocks": [
+     {"name": "紫金矿业", "code": "601899", "market": "AH", "role": "龙头", "why": "全球铜金龙头、量增"},
+     {"name": "洛阳钼业", "code": "603993", "market": "AH", "role": "弹性", "why": "铜钴纯度高、产能放量"},
+     {"name": "江西铜业", "code": "600362", "market": "AH", "role": "弹性", "why": "冶炼+矿、价涨弹性"},
+     {"name": "铜陵有色", "code": "000630", "market": "A", "role": "弹性", "why": "高负债经营杠杆大"}]},
 
-  {"name": "螺纹钢", "futures": "RB0", "sw2": "钢铁·普钢", "company": "鞍钢股份", "code": "000898", "market": "AH"},
-  {"name": "热卷", "futures": "HC0", "sw2": "钢铁·普钢", "company": "宝钢股份", "code": "600019", "market": "A"},
-  {"name": "铁矿石", "futures": "I0", "sw2": "钢铁·钢铁原料", "company": "河钢资源", "code": "000923", "market": "A"},
-  {"name": "不锈钢", "futures": "SS0", "sw2": "钢铁·特钢", "company": "太钢不锈", "code": "000825", "market": "A"},
-  {"name": "锰硅", "futures": "SM0", "sw2": "钢铁·铁合金", "company": "鄂尔多斯", "code": "600295", "market": "A"},
-  {"name": "硅铁", "futures": "SF0", "sw2": "钢铁·铁合金", "company": "鄂尔多斯", "code": "600295", "market": "A"},
+  {"name": "铝", "futures": "AL0", "sw2": "有色·工业金属·铝", "spread": [["AL0", 1], ["AO0", -1.93]],
+   "stocks": [
+     {"name": "中国铝业", "code": "601600", "market": "AH", "role": "龙头", "why": "电解铝+氧化铝一体化龙头"},
+     {"name": "云铝股份", "code": "000807", "market": "A", "role": "弹性", "why": "水电铝纯度高、弹性大"},
+     {"name": "神火股份", "code": "000933", "market": "A", "role": "弹性", "why": "煤+铝、高经营杠杆"},
+     {"name": "天山铝业", "code": "002532", "market": "A", "role": "弹性", "why": "低成本电解铝"}]},
 
-  {"name": "焦煤", "futures": "JM0", "sw2": "煤炭·焦煤", "company": "山西焦煤", "code": "000983", "market": "A"},
-  {"name": "焦炭", "futures": "J0", "sw2": "煤炭·焦炭", "company": "陕西黑猫", "code": "601015", "market": "A"},
+  {"name": "锌", "futures": "ZN0", "sw2": "有色·铅锌",
+   "stocks": [
+     {"name": "驰宏锌锗", "code": "600497", "market": "A", "role": "龙头", "why": "铅锌龙头"},
+     {"name": "株冶集团", "code": "600961", "market": "A", "role": "弹性", "why": "锌冶炼纯度高"},
+     {"name": "西部矿业", "code": "601168", "market": "A", "role": "弹性", "why": "铅锌铜多金属"}]},
 
-  {"name": "原油", "futures": "SC0", "sw2": "石化·油气开采", "company": "中国海油", "code": "600938", "market": "AH"},
-  {"name": "燃料油", "futures": "FU0", "sw2": "石化·炼化", "company": "中国石化", "code": "600028", "market": "AH"},
-  {"name": "沥青", "futures": "BU0", "sw2": "石化·炼化", "company": "中国石化", "code": "600028", "market": "AH"},
-  {"name": "液化气LPG", "futures": "PG0", "sw2": "石化·燃气", "company": "东华能源", "code": "002221", "market": "A"},
+  {"name": "铅", "futures": "PB0", "sw2": "有色·铅锌",
+   "stocks": [
+     {"name": "中金岭南", "code": "000060", "market": "A", "role": "龙头", "why": "铅锌矿龙头"},
+     {"name": "驰宏锌锗", "code": "600497", "market": "A", "role": "弹性", "why": "铅锌一体化"}]},
 
-  {"name": "PTA", "futures": "TA0", "sw2": "化工·涤纶", "company": "荣盛石化", "code": "002493", "market": "A"},
-  {"name": "乙二醇", "futures": "EG0", "sw2": "化工·聚酯原料", "company": "恒力石化", "code": "600346", "market": "A"},
-  {"name": "短纤", "futures": "PF0", "sw2": "化工·涤纶", "company": "新凤鸣", "code": "603225", "market": "A"},
-  {"name": "对二甲苯PX", "futures": "PX0", "sw2": "化工·芳烃", "company": "东方盛虹", "code": "000301", "market": "A"},
-  {"name": "甲醇", "futures": "MA0", "sw2": "化工·煤化工", "company": "宝丰能源", "code": "600989", "market": "A"},
-  {"name": "尿素", "futures": "UR0", "sw2": "化工·氮肥", "company": "华鲁恒升", "code": "600426", "market": "A"},
-  {"name": "PVC", "futures": "V0", "sw2": "化工·氯碱", "company": "中泰化学", "code": "002092", "market": "A"},
-  {"name": "烧碱", "futures": "SH0", "sw2": "化工·氯碱", "company": "滨化股份", "code": "601678", "market": "A"},
-  {"name": "聚丙烯PP", "futures": "PP0", "sw2": "化工·聚烯烃", "company": "东华能源", "code": "002221", "market": "A"},
-  {"name": "聚乙烯", "futures": "L0", "sw2": "化工·聚烯烃", "company": "中国石化", "code": "600028", "market": "AH"},
-  {"name": "苯乙烯", "futures": "EB0", "sw2": "化工·苯乙烯", "company": "卫星化学", "code": "002648", "market": "A"},
-  {"name": "纯碱", "futures": "SA0", "sw2": "化工·纯碱", "company": "远兴能源", "code": "000683", "market": "A"},
-  {"name": "玻璃", "futures": "FG0", "sw2": "建材·玻璃", "company": "旗滨集团", "code": "601636", "market": "A"},
-  {"name": "天然橡胶", "futures": "RU0", "sw2": "化工·橡胶", "company": "海南橡胶", "code": "601118", "market": "A"},
-  {"name": "纸浆", "futures": "SP0", "sw2": "轻工·造纸", "company": "太阳纸业", "code": "002078", "market": "A"},
+  {"name": "镍", "futures": "NI0", "sw2": "有色·镍",
+   "stocks": [
+     {"name": "华友钴业", "code": "603799", "market": "A", "role": "龙头", "why": "镍钴锂电材料龙头"},
+     {"name": "盛屯矿业", "code": "600711", "market": "A", "role": "弹性", "why": "镍钴资源、高杠杆"},
+     {"name": "格林美", "code": "002340", "market": "A", "role": "弹性", "why": "镍资源+回收"}]},
 
-  {"name": "豆粕", "futures": "M0", "sw2": "农牧·饲料", "company": "海大集团", "code": "002311", "market": "A"},
-  {"name": "豆油", "futures": "Y0", "sw2": "农牧·食用油", "company": "金龙鱼", "code": "300999", "market": "A"},
-  {"name": "棕榈油", "futures": "P0", "sw2": "农牧·食用油", "company": "金龙鱼", "code": "300999", "market": "A"},
-  {"name": "菜油", "futures": "OI0", "sw2": "农牧·食用油", "company": "道道全", "code": "002852", "market": "A"},
-  {"name": "玉米", "futures": "C0", "sw2": "农牧·种植", "company": "北大荒", "code": "600598", "market": "A"},
-  {"name": "豆一", "futures": "A0", "sw2": "农牧·种植", "company": "北大荒", "code": "600598", "market": "A"},
-  {"name": "白糖", "futures": "SR0", "sw2": "农牧·制糖", "company": "中粮糖业", "code": "600737", "market": "A"},
-  {"name": "棉花", "futures": "CF0", "sw2": "农牧·棉花", "company": "新农开发", "code": "600359", "market": "A"},
-  {"name": "生猪", "futures": "LH0", "sw2": "农牧·生猪养殖", "company": "牧原股份", "code": "002714", "market": "A"},
-  {"name": "鸡蛋", "futures": "JD0", "sw2": "农牧·禽养殖", "company": "圣农发展", "code": "002299", "market": "A"},
-  {"name": "苹果", "futures": "AP0", "sw2": "农牧·水果", "company": "宏辉果蔬", "code": "603336", "market": "A"},
-  {"name": "红枣", "futures": "CJ0", "sw2": "农牧·种植", "company": "好想你", "code": "002582", "market": "A"},
+  {"name": "锡", "futures": "SN0", "sw2": "有色·锡",
+   "stocks": [
+     {"name": "锡业股份", "code": "000960", "market": "A", "role": "龙头", "why": "全球锡龙头、纯度极高"},
+     {"name": "兴业银锡", "code": "000426", "market": "A", "role": "弹性", "why": "锡+银、弹性大"}]},
 
-  {"name": "集运欧线", "futures": "EC0", "sw2": "交运·航运·集运", "company": "中远海控", "code": "601919", "market": "AH"}
+  {"name": "黄金", "futures": "AU0", "sw2": "有色·贵金属·金",
+   "stocks": [
+     {"name": "山东黄金", "code": "600547", "market": "AH", "role": "龙头", "why": "金矿龙头"},
+     {"name": "赤峰黄金", "code": "600988", "market": "A", "role": "弹性", "why": "成长型、产量弹性大"},
+     {"name": "招金矿业", "code": "01818", "market": "H", "role": "弹性", "why": "港股金矿、纯度高"},
+     {"name": "中金黄金", "code": "600489", "market": "A", "role": "弹性", "why": "央企金矿"}]},
+
+  {"name": "白银", "futures": "AG0", "sw2": "有色·贵金属·银",
+   "stocks": [
+     {"name": "兴业银锡", "code": "000426", "market": "A", "role": "龙头", "why": "白银+锡、纯度高"},
+     {"name": "盛达资源", "code": "000603", "market": "A", "role": "弹性", "why": "白银纯度最高"},
+     {"name": "银泰黄金", "code": "000975", "market": "A", "role": "弹性", "why": "金银兼有"}]},
+
+  {"name": "工业硅", "futures": "SI0", "sw2": "有色·硅",
+   "stocks": [
+     {"name": "合盛硅业", "code": "603260", "market": "A", "role": "龙头", "why": "工业硅全球龙头、纯度高"},
+     {"name": "特变电工", "code": "600089", "market": "A", "role": "弹性", "why": "多晶硅+工业硅"},
+     {"name": "通威股份", "code": "600438", "market": "A", "role": "弹性", "why": "硅料龙头"}]},
+
+  {"name": "碳酸锂", "futures": "LC0", "sw2": "有色·能源金属·锂",
+   "stocks": [
+     {"name": "天齐锂业", "code": "002466", "market": "AH", "role": "龙头", "why": "锂矿龙头、纯度极高"},
+     {"name": "赣锋锂业", "code": "002460", "market": "AH", "role": "弹性", "why": "锂全产业链、弹性大"},
+     {"name": "盐湖股份", "code": "000792", "market": "A", "role": "弹性", "why": "低成本盐湖提锂"},
+     {"name": "永兴材料", "code": "002756", "market": "A", "role": "弹性", "why": "云母提锂、纯度高"}]},
+
+  {"name": "螺纹钢", "futures": "RB0", "sw2": "钢铁·普钢", "spread": [["RB0", 1], ["I0", -1.6], ["J0", -0.5]],
+   "stocks": [
+     {"name": "华菱钢铁", "code": "000932", "market": "A", "role": "龙头", "why": "普钢龙头、品种钢占比高"},
+     {"name": "鞍钢股份", "code": "000898", "market": "AH", "role": "弹性", "why": "高负债、利润弹性大"},
+     {"name": "三钢闽光", "code": "002110", "market": "A", "role": "弹性", "why": "区域龙头、纯钢"}]},
+
+  {"name": "热卷", "futures": "HC0", "sw2": "钢铁·普钢", "spread": [["HC0", 1], ["I0", -1.6], ["J0", -0.5]],
+   "stocks": [
+     {"name": "宝钢股份", "code": "600019", "market": "A", "role": "龙头", "why": "板材龙头"},
+     {"name": "华菱钢铁", "code": "000932", "market": "A", "role": "弹性", "why": "板材占比高"},
+     {"name": "首钢股份", "code": "000959", "market": "A", "role": "弹性", "why": "板材、高杠杆"}]},
+
+  {"name": "铁矿石", "futures": "I0", "sw2": "钢铁·钢铁原料",
+   "stocks": [
+     {"name": "河钢资源", "code": "000923", "market": "A", "role": "龙头", "why": "海外铁矿"},
+     {"name": "大中矿业", "code": "001203", "market": "A", "role": "弹性", "why": "铁矿纯度高"},
+     {"name": "金岭矿业", "code": "000655", "market": "A", "role": "弹性", "why": "铁矿小盘弹性"}]},
+
+  {"name": "不锈钢", "futures": "SS0", "sw2": "钢铁·特钢",
+   "stocks": [
+     {"name": "太钢不锈", "code": "000825", "market": "A", "role": "龙头", "why": "不锈钢龙头"},
+     {"name": "甬金股份", "code": "603995", "market": "A", "role": "弹性", "why": "冷轧不锈钢、纯度高"}]},
+
+  {"name": "锰硅", "futures": "SM0", "sw2": "钢铁·铁合金",
+   "stocks": [
+     {"name": "鄂尔多斯", "code": "600295", "market": "A", "role": "龙头", "why": "硅铁锰硅+煤电一体"}]},
+
+  {"name": "硅铁", "futures": "SF0", "sw2": "钢铁·铁合金",
+   "stocks": [
+     {"name": "鄂尔多斯", "code": "600295", "market": "A", "role": "龙头", "why": "硅铁龙头、煤电自给"},
+     {"name": "君正集团", "code": "601216", "market": "A", "role": "弹性", "why": "硅铁+氯碱"}]},
+
+  {"name": "焦煤", "futures": "JM0", "sw2": "煤炭·焦煤",
+   "stocks": [
+     {"name": "山西焦煤", "code": "000983", "market": "A", "role": "龙头", "why": "炼焦煤龙头"},
+     {"name": "平煤股份", "code": "601666", "market": "A", "role": "弹性", "why": "主焦煤、高弹性"},
+     {"name": "淮北矿业", "code": "600985", "market": "A", "role": "弹性", "why": "焦煤+焦炭一体"}]},
+
+  {"name": "焦炭", "futures": "J0", "sw2": "煤炭·焦炭", "spread": [["J0", 1], ["JM0", -1.3]],
+   "stocks": [
+     {"name": "陕西黑猫", "code": "601015", "market": "A", "role": "龙头", "why": "独立焦化龙头、弹性大"},
+     {"name": "金能科技", "code": "603113", "market": "A", "role": "弹性", "why": "焦炭+PDH"},
+     {"name": "中国旭阳集团", "code": "01907", "market": "H", "role": "弹性", "why": "港股焦炭龙头"}]},
+
+  {"name": "原油", "futures": "SC0", "sw2": "石化·油气开采",
+   "stocks": [
+     {"name": "中国海油", "code": "600938", "market": "AH", "role": "龙头", "why": "上游纯度最高、油价弹性"},
+     {"name": "中国石油", "code": "601857", "market": "AH", "role": "弹性", "why": "油气一体"},
+     {"name": "中海油服", "code": "601808", "market": "AH", "role": "弹性", "why": "油服、油价上行受益"}]},
+
+  {"name": "燃料油", "futures": "FU0", "sw2": "石化·炼化",
+   "stocks": [
+     {"name": "中国石化", "code": "600028", "market": "AH", "role": "龙头", "why": "炼化龙头"}]},
+
+  {"name": "沥青", "futures": "BU0", "sw2": "石化·炼化",
+   "stocks": [
+     {"name": "中国石化", "code": "600028", "market": "AH", "role": "龙头", "why": "沥青炼化"}]},
+
+  {"name": "液化气LPG", "futures": "PG0", "sw2": "石化·燃气",
+   "stocks": [
+     {"name": "东华能源", "code": "002221", "market": "A", "role": "龙头", "why": "LPG+PDH龙头"},
+     {"name": "卫星化学", "code": "002648", "market": "A", "role": "弹性", "why": "轻烃裂解"}]},
+
+  {"name": "PTA", "futures": "TA0", "sw2": "化工·涤纶", "spread": [["TA0", 1], ["PX0", -0.66]],
+   "stocks": [
+     {"name": "荣盛石化", "code": "002493", "market": "A", "role": "龙头", "why": "炼化-PX-PTA一体龙头"},
+     {"name": "桐昆股份", "code": "601233", "market": "A", "role": "弹性", "why": "PTA-涤纶纯度高"},
+     {"name": "恒力石化", "code": "600346", "market": "A", "role": "弹性", "why": "炼化-聚酯一体"}]},
+
+  {"name": "乙二醇", "futures": "EG0", "sw2": "化工·聚酯原料",
+   "stocks": [
+     {"name": "恒力石化", "code": "600346", "market": "A", "role": "龙头", "why": "乙二醇产能大"},
+     {"name": "卫星化学", "code": "002648", "market": "A", "role": "弹性", "why": "乙烷制乙二醇"}]},
+
+  {"name": "短纤", "futures": "PF0", "sw2": "化工·涤纶", "spread": [["PF0", 1], ["TA0", -0.85], ["EG0", -0.34]],
+   "stocks": [
+     {"name": "新凤鸣", "code": "603225", "market": "A", "role": "龙头", "why": "涤纶长丝短纤龙头、纯度高"},
+     {"name": "桐昆股份", "code": "601233", "market": "A", "role": "弹性", "why": "聚酯龙头"}]},
+
+  {"name": "对二甲苯PX", "futures": "PX0", "sw2": "化工·芳烃",
+   "stocks": [
+     {"name": "东方盛虹", "code": "000301", "market": "A", "role": "龙头", "why": "炼化-PX一体"},
+     {"name": "恒力石化", "code": "600346", "market": "A", "role": "弹性", "why": "PX自给"}]},
+
+  {"name": "甲醇", "futures": "MA0", "sw2": "化工·煤化工",
+   "stocks": [
+     {"name": "宝丰能源", "code": "600989", "market": "A", "role": "龙头", "why": "煤制甲醇烯烃龙头、低成本"},
+     {"name": "远兴能源", "code": "000683", "market": "A", "role": "弹性", "why": "甲醇+纯碱"}]},
+
+  {"name": "尿素", "futures": "UR0", "sw2": "化工·氮肥",
+   "stocks": [
+     {"name": "华鲁恒升", "code": "600426", "market": "A", "role": "龙头", "why": "煤化工平台、低成本"},
+     {"name": "鲁西化工", "code": "000830", "market": "A", "role": "弹性", "why": "化肥+化工"},
+     {"name": "云天化", "code": "600096", "market": "A", "role": "弹性", "why": "化肥龙头、高杠杆"}]},
+
+  {"name": "PVC", "futures": "V0", "sw2": "化工·氯碱",
+   "stocks": [
+     {"name": "中泰化学", "code": "002092", "market": "A", "role": "龙头", "why": "电石法PVC龙头、弹性大"},
+     {"name": "新疆天业", "code": "600075", "market": "A", "role": "弹性", "why": "PVC一体化"}]},
+
+  {"name": "烧碱", "futures": "SH0", "sw2": "化工·氯碱",
+   "stocks": [
+     {"name": "滨化股份", "code": "601678", "market": "A", "role": "龙头", "why": "烧碱龙头"},
+     {"name": "中泰化学", "code": "002092", "market": "A", "role": "弹性", "why": "氯碱一体"}]},
+
+  {"name": "聚丙烯PP", "futures": "PP0", "sw2": "化工·聚烯烃", "spread": [["PP0", 1], ["MA0", -3]],
+   "stocks": [
+     {"name": "东华能源", "code": "002221", "market": "A", "role": "龙头", "why": "PDH-PP龙头"},
+     {"name": "卫星化学", "code": "002648", "market": "A", "role": "弹性", "why": "轻烃-聚烯烃"}]},
+
+  {"name": "聚乙烯", "futures": "L0", "sw2": "化工·聚烯烃", "spread": [["L0", 1], ["MA0", -3]],
+   "stocks": [
+     {"name": "中国石化", "code": "600028", "market": "AH", "role": "龙头", "why": "聚乙烯产能大"},
+     {"name": "卫星化学", "code": "002648", "market": "A", "role": "弹性", "why": "乙烷裂解-聚乙烯"}]},
+
+  {"name": "苯乙烯", "futures": "EB0", "sw2": "化工·苯乙烯",
+   "stocks": [
+     {"name": "卫星化学", "code": "002648", "market": "A", "role": "龙头", "why": "苯乙烯产业链"},
+     {"name": "万华化学", "code": "600309", "market": "A", "role": "弹性", "why": "一体化、苯乙烯配套"}]},
+
+  {"name": "纯碱", "futures": "SA0", "sw2": "化工·纯碱",
+   "stocks": [
+     {"name": "远兴能源", "code": "000683", "market": "A", "role": "龙头", "why": "天然碱龙头、低成本弹性大"},
+     {"name": "三友化工", "code": "600409", "market": "A", "role": "弹性", "why": "纯碱+粘胶"},
+     {"name": "山东海化", "code": "000822", "market": "A", "role": "弹性", "why": "纯碱纯度高、弹性大"}]},
+
+  {"name": "玻璃", "futures": "FG0", "sw2": "建材·玻璃", "spread": [["FG0", 1], ["SA0", -0.2]],
+   "stocks": [
+     {"name": "旗滨集团", "code": "601636", "market": "A", "role": "龙头", "why": "浮法玻璃龙头、纯度高"},
+     {"name": "南玻A", "code": "000012", "market": "A", "role": "弹性", "why": "玻璃+光伏玻璃"},
+     {"name": "信义玻璃", "code": "00868", "market": "H", "role": "弹性", "why": "港股玻璃龙头"}]},
+
+  {"name": "天然橡胶", "futures": "RU0", "sw2": "化工·橡胶",
+   "stocks": [
+     {"name": "海南橡胶", "code": "601118", "market": "A", "role": "龙头", "why": "天胶种植纯度最高、弹性大"},
+     {"name": "广垦橡胶", "code": "001306", "market": "A", "role": "弹性", "why": "天胶种植加工"}]},
+
+  {"name": "纸浆", "futures": "SP0", "sw2": "轻工·造纸",
+   "stocks": [
+     {"name": "太阳纸业", "code": "002078", "market": "A", "role": "龙头", "why": "浆纸一体龙头"},
+     {"name": "晨鸣纸业", "code": "000488", "market": "AH", "role": "弹性", "why": "自制浆比例高、弹性大"},
+     {"name": "博汇纸业", "code": "600966", "market": "A", "role": "弹性", "why": "包装纸"}]},
+
+  {"name": "豆粕", "futures": "M0", "sw2": "农牧·饲料", "spread": [["Y0", 0.18], ["M0", 0.79], ["B0", -1]],
+   "stocks": [
+     {"name": "海大集团", "code": "002311", "market": "A", "role": "龙头", "why": "饲料龙头"},
+     {"name": "新希望", "code": "000876", "market": "A", "role": "弹性", "why": "饲料+养殖"}]},
+
+  {"name": "豆油", "futures": "Y0", "sw2": "农牧·食用油", "spread": [["Y0", 0.18], ["M0", 0.79], ["B0", -1]],
+   "stocks": [
+     {"name": "金龙鱼", "code": "300999", "market": "A", "role": "龙头", "why": "压榨+食用油龙头"},
+     {"name": "道道全", "code": "002852", "market": "A", "role": "弹性", "why": "食用油纯度高、小盘弹性"}]},
+
+  {"name": "棕榈油", "futures": "P0", "sw2": "农牧·食用油",
+   "stocks": [
+     {"name": "金龙鱼", "code": "300999", "market": "A", "role": "龙头", "why": "油脂龙头"},
+     {"name": "道道全", "code": "002852", "market": "A", "role": "弹性", "why": "油脂弹性"}]},
+
+  {"name": "菜油", "futures": "OI0", "sw2": "农牧·食用油",
+   "stocks": [
+     {"name": "道道全", "code": "002852", "market": "A", "role": "龙头", "why": "菜油纯度高"},
+     {"name": "西王食品", "code": "000639", "market": "A", "role": "弹性", "why": "食用油"}]},
+
+  {"name": "玉米", "futures": "C0", "sw2": "农牧·种植",
+   "stocks": [
+     {"name": "北大荒", "code": "600598", "market": "A", "role": "龙头", "why": "种植龙头、地租弹性"},
+     {"name": "登海种业", "code": "002041", "market": "A", "role": "弹性", "why": "玉米种子"}]},
+
+  {"name": "豆一", "futures": "A0", "sw2": "农牧·种植",
+   "stocks": [
+     {"name": "北大荒", "code": "600598", "market": "A", "role": "龙头", "why": "国产大豆种植龙头"}]},
+
+  {"name": "白糖", "futures": "SR0", "sw2": "农牧·制糖",
+   "stocks": [
+     {"name": "中粮糖业", "code": "600737", "market": "A", "role": "龙头", "why": "制糖龙头、糖价弹性"},
+     {"name": "南宁糖业", "code": "000911", "market": "A", "role": "弹性", "why": "纯糖、高弹性"}]},
+
+  {"name": "棉花", "futures": "CF0", "sw2": "农牧·棉花",
+   "stocks": [
+     {"name": "新农开发", "code": "600359", "market": "A", "role": "龙头", "why": "棉花种植加工"},
+     {"name": "新赛股份", "code": "600540", "market": "A", "role": "弹性", "why": "棉花纯度高"}]},
+
+  {"name": "生猪", "futures": "LH0", "sw2": "农牧·生猪养殖",
+   "stocks": [
+     {"name": "牧原股份", "code": "002714", "market": "A", "role": "龙头", "why": "生猪龙头、低成本"},
+     {"name": "温氏股份", "code": "300498", "market": "A", "role": "弹性", "why": "猪鸡双主业"},
+     {"name": "神农集团", "code": "605296", "market": "A", "role": "弹性", "why": "小盘高弹性"}]},
+
+  {"name": "鸡蛋", "futures": "JD0", "sw2": "农牧·禽养殖",
+   "stocks": [
+     {"name": "圣农发展", "code": "002299", "market": "A", "role": "龙头", "why": "白鸡龙头"},
+     {"name": "益生股份", "code": "002458", "market": "A", "role": "弹性", "why": "祖代鸡苗、弹性大"}]},
+
+  {"name": "苹果", "futures": "AP0", "sw2": "农牧·水果",
+   "stocks": [
+     {"name": "宏辉果蔬", "code": "603336", "market": "A", "role": "龙头", "why": "果蔬流通"}]},
+
+  {"name": "红枣", "futures": "CJ0", "sw2": "农牧·种植",
+   "stocks": [
+     {"name": "好想你", "code": "002582", "market": "A", "role": "龙头", "why": "红枣龙头"}]},
+
+  {"name": "集运欧线", "futures": "EC0", "sw2": "交运·航运·集运",
+   "stocks": [
+     {"name": "中远海控", "code": "601919", "market": "AH", "role": "龙头", "why": "集运龙头、运价弹性极大"},
+     {"name": "东方海外国际", "code": "00316", "market": "H", "role": "弹性", "why": "港股集运纯度高"}]}
 ]

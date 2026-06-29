@@ -1,5 +1,5 @@
-"""功能2 分析：按阈值筛出"价格明显上涨 + 毛利明显改善"的行业，
-按改善强度排序，标出最早信号日期与最受益 AH 公司。
+"""功能2 分析：达标 = 涨幅历史高分位 且 盘面价差走阔（同期、量纲统一）。
+按利润扩张强度排序。
 用法: python3 analyze.py <raw.json> [输出路径]
 """
 import sys
@@ -14,15 +14,20 @@ def main():
 
     cfg = load_config()
     th = cfg["thresholds"]
+    pmin = th.get("price_percentile_min", 90)
+    need_widen = th.get("require_spread_widen", True)
     rows = read_json(raw_path)
 
-    hits = [
-        r for r in rows
-        if r["price_change_pct"] >= th["price_up_pct"]
-        and r["margin_change_pp"] >= th["margin_improve_pp"]
-    ]
-    # 综合强度 = 涨价幅度 + 毛利改善(放大权重)，从高到低
-    hits.sort(key=lambda r: r["price_change_pct"] + r["margin_change_pp"] * 2,
+    hits = []
+    for r in rows:
+        if r.get("price_percentile", 0) < pmin:
+            continue
+        if need_widen and r.get("spread_change", 0) <= 0:
+            continue
+        hits.append(r)
+
+    # 利润扩张强度优先（价差走阔% 加权）+ 涨幅分位
+    hits.sort(key=lambda r: r.get("spread_change_pct", 0) * 2 + r.get("price_percentile", 0),
               reverse=True)
 
     result = {
@@ -34,7 +39,7 @@ def main():
         "industries": hits,
     }
     write_json(out, result)
-    print(f"[analyze] {len(hits)}/{len(rows)} 个行业入选 -> {out}")
+    print(f"[analyze] {len(hits)}/{len(rows)} 个品种达标 -> {out}")
 
 
 if __name__ == "__main__":
