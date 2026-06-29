@@ -1,0 +1,17 @@
+# 私密配置（含飞书 webhook）—— 绝不入库，用 config.example.json 作模板
+config.json
+
+# 运行产物
+reports/
+*.log
+
+# 环境 / key
+.ah_env
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统
+.DS_Store

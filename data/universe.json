@@ -1,0 +1,44 @@
+[
+  {
+    "industry": "有色-铜",
+    "product": "沪铜主力(CU)",
+    "futures": "CU0",
+    "margin_stock": "601899",
+    "ah_company": {"name": "紫金矿业", "a_code": "601899.SH", "h_code": "02899.HK"}
+  },
+  {
+    "industry": "电解铝",
+    "product": "沪铝主力(AL)",
+    "futures": "AL0",
+    "margin_stock": "601600",
+    "ah_company": {"name": "中国铝业", "a_code": "601600.SH", "h_code": "02600.HK"}
+  },
+  {
+    "industry": "航运-集运",
+    "product": "欧线集运期货(EC)",
+    "futures": "EC0",
+    "margin_stock": "601919",
+    "ah_company": {"name": "中远海控", "a_code": "601919.SH", "h_code": "01919.HK"}
+  },
+  {
+    "industry": "钢铁-螺纹",
+    "product": "螺纹钢主力(RB)",
+    "futures": "RB0",
+    "margin_stock": "000898",
+    "ah_company": {"name": "鞍钢股份", "a_code": "000898.SZ", "h_code": "00347.HK"}
+  },
+  {
+    "industry": "贵金属-黄金",
+    "product": "沪金主力(AU)",
+    "futures": "AU0",
+    "margin_stock": "600547",
+    "ah_company": {"name": "山东黄金", "a_code": "600547.SH", "h_code": "01787.HK"}
+  },
+  {
+    "industry": "煤炭-焦煤",
+    "product": "焦煤主力(JM)",
+    "futures": "JM0",
+    "margin_stock": "600188",
+    "ah_company": {"name": "兖矿能源", "a_code": "600188.SH", "h_code": "01171.HK"}
+  }
+]
