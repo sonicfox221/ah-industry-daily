@@ -1,0 +1,45 @@
+# 通用 skill manifest（兼容层）
+# QClaw / Claude Code / openclaw 实际读的是 SKILL.md 的 frontmatter；
+# 本文件供其它认 skill.yaml/manifest 的平台对接，内容与 SKILL.md frontmatter 保持一致。
+
+name: ah-industry-daily
+version: "1.0"
+description: >-
+  生成行业景气日报：覆盖约50个有期货的周期品种(申万二级)，用可扩展的多指标框架算景气度并排行，
+  解释核心驱动(利润扩张/成本推动)、给出起涨日与最受益的A股或港股标的，推送当前会话渠道或飞书。
+  每日盯行业景气拐点。
+
+keywords: [行业日报, 行业景气, 涨价, 毛利改善, AH公司, 景气日报]
+
+# 运行
+language: python
+entrypoint: demo.sh            # 一键全流程；或在 agent 里按 SKILL.md 流水线逐步执行
+runtime:
+  python: ">=3.9"
+requires:
+  packages: [akshare, pandas]   # pip install -r requirements.txt
+
+# 配置 / 产物
+config:
+  file: config.json             # 从 config.example.json 拷贝后填写
+  env: [DEEPSEEK_API_KEY]       # 可选；不设则驱动留空、其它照常
+outputs:
+  - reports/report_<date>.md
+
+# 权限（供需要声明权限的平台）
+permissions:
+  - network                     # akshare 拉数 / 可选 LLM 调用 / 可选飞书推送
+  - exec                        # 运行 Python 脚本
+  - filesystem                  # 读写 reports/
+
+# 可扩展点
+extensible:
+  indicators: scripts/indicators.py   # @indicator 注册新指标
+  data_sources: scripts/sources.py    # 实现/替换数据源
+
+metadata:
+  openclaw:
+    emoji: 📈
+  data_source: akshare
+  positioning: 投研指导工具（非交易执行）
+  repo: https://github.com/sonicfox221/ah-industry-daily
