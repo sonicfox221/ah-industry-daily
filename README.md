@@ -5,6 +5,8 @@
 
 纯 Python，可作为 [Claude Code](https://claude.com/claude-code) / QClaw 的 **skill** 调用，也可直接跑脚本或挂 crontab 定时。数据来自 [akshare](https://github.com/akfamily/akshare)，驱动解释由你**自己的 LLM API**（默认 DeepSeek，可换）生成。
 
+> 📖 **制作方法 / 方法论**（数据源、盘面价差公式与系数出处、达标逻辑、局限）见 **[METHODOLOGY.md](METHODOLOGY.md)**。
+
 ---
 
 ## ✨ 特性
