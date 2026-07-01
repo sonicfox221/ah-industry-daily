@@ -2,5 +2,14 @@
   "base_url": "https://api.deepseek.com/chat/completions",
   "model": "deepseek-chat",
   "api_key_env": "DEEPSEEK_API_KEY",
-  "temperature": 0
+  "system_prompt": "你是一个乐于助人的中文助手。",
+  "temperature": 0.7,
+  "top_p": 1,
+  "max_tokens": 512,
+  "frequency_penalty": 0,
+  "presence_penalty": 0,
+  "stop": null,
+  "seed": null,
+  "stream": false,
+  "timeout": 60
 }
