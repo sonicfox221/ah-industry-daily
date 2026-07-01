@@ -81,8 +81,8 @@ bash demo.sh    # 报告生成到 reports/；driver 需 export DEEPSEEK_API_KEY 
 | `notify.keyword` | 飞书自定义关键词兜底，需与飞书机器人设置一致 |
 | `thresholds.price_up_pct` | 涨价入选门槛（%） |
 | `thresholds.margin_improve_pp` | 毛利改善入选门槛（百分点） |
-| `ai.base_url` / `ai.model` | LLM 接口与模型（OpenAI 兼容，换模型改这里） |
-| `ai.api_key_env` | 读哪个环境变量当 api key（默认 `DEEPSEEK_API_KEY`） |
+| `scripts/llm_config.json` → `base_url` / `model` | LLM 接口与模型（OpenAI 兼容，换模型改这里） |
+| `scripts/llm_config.json` → `api_key_env` | 读哪个环境变量当 api key（默认 `DEEPSEEK_API_KEY`） |
 | `data/universe.json` | 行业 ↔ 期货品种 ↔ 龙头股（算毛利）↔ AH 公司 映射，按需增删 |
 
 ---
@@ -133,7 +133,7 @@ crontab -e
 
 - **加/减行业**：编辑 `data/universe.json`（行业、期货品种代码、算毛利的龙头股、AH 公司）。
 - **调门槛**：改 `config.json` 的 `thresholds`。
-- **换模型**：改 `config.json` 的 `ai.base_url` / `ai.model` / `ai.api_key_env`（任意 OpenAI 兼容接口）。
+- **换模型**：改 `scripts/llm_config.json` 的 `base_url` / `model` / `api_key_env`（任意 OpenAI 兼容接口）。
 - **换推送**：`notify.channel` 改 `wecom`（企业微信）或 `file`（只生成本地报告不推送）。
 - **改驱动文风**：编辑 `scripts/gen_driver.py` 里的 `SYS_PROMPT`。
 

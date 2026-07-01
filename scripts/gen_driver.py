@@ -1,14 +1,13 @@
 """功能3 生成核心驱动（数字锚）：对"重点关注"品种，基于景气分项写一句驱动，
 并标"利润扩张型/成本推动型"。
 - QClaw/agent 里：可由自带模型直接读 analysis 填 driver（无需 key）。
-- 纯脚本：调 config.ai（默认 DeepSeek），api key 读环境变量；无 key/无重点品种跳过。
+- 纯脚本：调 llm_client（配置在 scripts/llm_config.json，key 读环境变量）；无 key/无重点品种跳过。
 用法: python3 gen_driver.py <analysis.json>
 """
 import sys
 import os
-import json
-import urllib.request
-from common import load_config, read_json, write_json
+from common import read_json, write_json
+from llm_client import chat, CFG
 
 SYS_PROMPT = (
     "你是大宗商品行业研究员。根据给定品种的景气总分与各分项指标（价格动量/盘面利润走阔/利润水平/财报毛利等）、"
@@ -17,38 +16,15 @@ SYS_PROMPT = (
     "'成本推动型'(价格涨但利润走阔分低，利好被上游吃掉)。只输出这一句话。")
 
 
-def call_llm(ai, key, user_prompt):
-    body = json.dumps({
-        "model": ai["model"],
-        "messages": [
-            {"role": "system", "content": SYS_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-        "temperature": 0.4,
-        "stream": False,
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        ai["base_url"], data=body,
-        headers={"Content-Type": "application/json",
-                 "Authorization": "Bearer " + key})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        d = json.load(r)
-    return d["choices"][0]["message"]["content"].strip()
-
-
 def main():
     path = sys.argv[1]
-    ai = load_config().get("ai", {})
-    key_env = ai.get("api_key_env", "DEEPSEEK_API_KEY")
-    key = os.environ.get(key_env, "")
-
     ana = read_json(path)
     inds = [r for r in ana.get("ranking", []) if r.get("focus")]
     if not inds:
         print("[gen_driver] 无重点关注品种，跳过")
         return
-    if not key:
-        print(f"[gen_driver] 未设 {key_env}，driver 留空（降级；QClaw 里可由自带模型填）")
+    if not os.environ.get(CFG["api_key_env"]):
+        print(f"[gen_driver] 未设 {CFG['api_key_env']}，driver 留空（降级；QClaw 里可由自带模型填）")
         return
 
     for r in inds:
@@ -56,7 +32,7 @@ def main():
         up = (f"品种：{r['industry']}/{r['product']}；景气总分 {r['prosperity']}；"
               f"分项：{parts}；起涨日 {r['first_signal_date']}。")
         try:
-            r["driver"] = call_llm(ai, key, up)
+            r["driver"] = chat(up, system=SYS_PROMPT)
             print(f"  · {r['product']}: {r['driver']}")
         except Exception as e:
             print(f"  ! {r['product']} 生成失败(留空): {e}")

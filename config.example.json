@@ -10,12 +10,5 @@
   "thresholds": {
     "prosperity_focus": 70
   },
-  "indicator_weights": {},
-  "ai": {
-    "_comment": "OpenAI 兼容接口；换模型改 base_url/model。key 放环境变量，不写这里。",
-    "provider": "deepseek",
-    "base_url": "https://api.deepseek.com/chat/completions",
-    "model": "deepseek-chat",
-    "api_key_env": "DEEPSEEK_API_KEY"
-  }
+  "indicator_weights": {}
 }

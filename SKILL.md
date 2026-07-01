@@ -39,7 +39,7 @@ metadata: {"openclaw": {"emoji": "📈"}}
      用 `Edit` 填进 `driver` 字段。这步只是把脚本已算好的数字总结成一句话，对模型要求很低，
      普通模型即可；0 达标则跳过。
    - **纯脚本 / 无人值守定时**：`python3 gen_driver.py reports/analysis_<date>.json`，
-     调 `config.ai`（默认 DeepSeek，需环境变量 key）；无 key 自动跳过、driver 留空、不阻断。
+     调 `scripts/llm_config.json` 配的模型（默认 DeepSeek，需环境变量 key）；无 key 自动跳过、driver 留空、不阻断。
 
 4. **`python3 render_report.py reports/analysis_<date>.json reports/report_<date>.md`** —
    渲染 Markdown 日报。
